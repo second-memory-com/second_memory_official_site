@@ -1,0 +1,325 @@
+/* 
+  Second Memory Official Site 
+  シンプルで読みやすい基本のCSS
+*/
+
+/* -------------------------------------
+   全体の色や設定（変数）
+------------------------------------- */
+:root {
+  --bg-color: #f4f7f6;
+  /* 全体の背景色（薄いグレー） */
+  --text-color: #2b3a32;
+  /* 文字の色（濃い緑） */
+  --main-green: #295b4a;
+  /* ロゴやボタンに使うメインの緑 */
+  --box-bg: #ffffff;
+  /* ボックスの背景色（白） */
+}
+
+/* -------------------------------------
+   リセット（ブラウザごとの余白をゼロにする）
+------------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Noto Sans JP', sans-serif;
+  line-height: 1.8;
+}
+
+/* リンクの下線を消す */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 一部の英字見出しをかっこいいフォントにする */
+.logo,
+.section-label {
+  font-family: 'Playfair Display', serif;
+}
+
+/* -------------------------------------
+   共通の部品（コンテナやボタン）
+------------------------------------- */
+
+/* コンテナ：コンテンツの幅を揃えて中央に配置する */
+.container {
+  max-width: 1000px;
+  /* ここより広くならない */
+  margin: 0 auto;
+  /* 左右の余白を自動（中央揃え） */
+  padding: 0 20px;
+  /* スマホの時に端にぴったりくっつかないように */
+}
+
+/* 文字を中央揃えにする便利なクラス */
+.text-center {
+  text-align: center;
+}
+
+/* 大きなセクションごとの余白 */
+section {
+  padding: 100px 0;
+}
+
+/* -------------------------------------
+   見出しのデザイン
+------------------------------------- */
+.section-label {
+  display: block;
+  color: var(--main-green);
+  letter-spacing: 0.1em;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+}
+
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  line-height: 1.4;
+}
+
+/* ボタンのデザイン */
+.btn-primary {
+  display: inline-block;
+  background-color: var(--main-green);
+  color: #ffffff;
+  padding: 15px 40px;
+  border-radius: 30px;
+  /* 角を丸くする */
+  margin-top: 20px;
+  transition: opacity 0.3s;
+  /* ホバー時にふわっと変わる */
+}
+
+.btn-primary:hover {
+  opacity: 0.8;
+}
+
+/* -------------------------------------
+   各セクションの詳細デザイン
+------------------------------------- */
+
+/* ナビゲーションバー */
+.navbar {
+  background-color: #ffffff;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 20px 0;
+  position: sticky;
+  /* スクロールしても上部にくっつく */
+  top: 0;
+  z-index: 100;
+  /* 他の要素より上に表示 */
+}
+
+.nav-content {
+  display: flex;
+  /* 横並びにする */
+  justify-content: space-between;
+  /* 左右に離す */
+  align-items: center;
+  /* 縦の中央で揃える */
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--main-green);
+}
+
+.nav-links {
+  list-style: none;
+  /* 点マークを消す */
+  display: flex;
+  /* メニューを横並びにする */
+  gap: 30px;
+  /* メニュー同士の隙間 */
+  align-items: center;
+}
+
+.nav-btn {
+  border: 1px solid var(--main-green);
+  color: var(--main-green);
+  padding: 8px 20px;
+  border-radius: 20px;
+}
+
+/* ヒーローセクション（最初の画像） */
+.hero {
+  background-image: url('assets/img/hero_bg_nature.png');
+  background-size: cover;
+  /* 画像を枠いっぱいに広げる */
+  background-position: center;
+  /* 画像の中央を表示 */
+  height: 80vh;
+  /* 画面の高さの80% */
+  display: flex;
+  /* 横並び・縦並びの制御 */
+  align-items: center;
+  /* 縦の中央で揃える */
+  text-align: center;
+  color: #ffffff;
+  position: relative;
+}
+
+/* 画像が明るすぎると文字が見えないので、少し黒い膜をかける */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(30, 45, 38, 0.4);
+}
+
+.hero .container {
+  position: relative;
+  /* 黒い膜より上に文字を出すため */
+  z-index: 10;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+/* 白いボックスのデザイン（ミッション、会社概要など） */
+.mission-box,
+.company-box {
+  background-color: var(--box-bg);
+  padding: 50px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  /* 軽い影をつける */
+}
+
+.mission-box p {
+  margin-bottom: 20px;
+}
+
+/* サービス・製品エリア（4つを2列×2段で並べる） */
+.service-grid {
+  display: grid;
+  /* グリッド（マス目）状に配置します */
+  grid-template-columns: 1fr 1fr;
+  /* 2列（1:1の割合）に並べます */
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.service-item {
+  background-color: var(--box-bg);
+  padding: 40px 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.service-icon {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.service-item h3 {
+  color: var(--main-green);
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+}
+
+.service-item p {
+  text-align: left;
+  font-size: 0.95rem;
+}
+
+/* 会社概要の表 */
+.company-table {
+  width: 100%;
+  border-collapse: collapse;
+  /* 線の隙間を消す */
+}
+
+.company-table th,
+.company-table td {
+  padding: 20px 0;
+  border-bottom: 1px solid #e0e0e0;
+  /* 下線だけ引く */
+  text-align: left;
+}
+
+.company-table th {
+  width: 30%;
+  color: var(--main-green);
+}
+
+/* フッター */
+.footer {
+  background-color: var(--main-green);
+  color: #ffffff;
+  text-align: center;
+  padding: 40px 0;
+}
+
+.footer-logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* -------------------------------------
+   スマホ用対応（レスポンシブデザイン）
+------------------------------------- */
+/* 画面幅が768px以下の時だけ、この中の設定が有効になります */
+@media (max-width: 768px) {
+
+  /* セクションの余白を少し狭くする */
+  section {
+    padding: 60px 0;
+  }
+
+  /* 文字サイズをスマホ向けに小さくする */
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  /* ボックスの余白を狭くする */
+  .mission-box,
+  .company-box {
+    padding: 30px 20px;
+  }
+
+  /* メニューを非表示にする（最初は非表示にしておく） */
+  .nav-links {
+    display: none;
+  }
+
+  /* サービスの2列並びを「縦1列」にする魔法 */
+  .service-grid {
+    grid-template-columns: 1fr;
+    /* 1列に変更します */
+  }
+
+  /* 会社概要の表を縦に並べる魔法 */
+  .company-table th,
+  .company-table td {
+    display: block;
+    /* これを追加するだけで縦並びになります */
+    width: 100%;
+  }
+
+  /* 下の余白を調整 */
+  .company-table th {
+    padding-bottom: 5px;
+    border-bottom: none;
+  }
+
+  .company-table td {
+    padding-top: 0;
+  }
+}
