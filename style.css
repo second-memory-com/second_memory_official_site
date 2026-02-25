@@ -1,20 +1,20 @@
 /* 
   Second Memory Official Site 
-  シンプルで読みやすい基本のCSS
+  「自然の中にいるような深呼吸」と「霧が晴れるような透明感」
 */
 
 /* -------------------------------------
    全体の色や設定（変数）
 ------------------------------------- */
 :root {
-  --bg-color: #f4f7f6;
-  /* 全体の背景色（薄いグレー） */
-  --text-color: #2b3a32;
-  /* 文字の色（濃い緑） */
-  --main-green: #295b4a;
-  /* ロゴやボタンに使うメインの緑 */
-  --box-bg: #ffffff;
-  /* ボックスの背景色（白） */
+  --bg-color: #ecf0f1;
+  /* 霧や朝の空気のような薄い色 */
+  --text-color: #2c3e38;
+  /* 深い森のような落ち着いた緑（黒の代わり） */
+  --main-green: #3a6351;
+  /* ボタンやアクセントに使うメインの緑 */
+  --accent-color: #8da69b;
+  /* 補助的な淡い緑 */
 }
 
 /* -------------------------------------
@@ -31,42 +31,68 @@ body {
   color: var(--text-color);
   font-family: 'Noto Sans JP', sans-serif;
   line-height: 1.8;
+  letter-spacing: 0.05em;
+  /* 背景にうっすらとグラデーションをかけて透明感を出す */
+  background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
 }
 
 /* リンクの下線を消す */
 a {
   text-decoration: none;
   color: inherit;
+  transition: opacity 0.3s ease;
 }
 
-/* 一部の英字見出しをかっこいいフォントにする */
+a:hover {
+  opacity: 0.7;
+}
+
+/* 英字見出し・ロゴに使用するフォント */
 .logo,
 .section-label {
   font-family: 'Playfair Display', serif;
+}
+
+/* 和文タイトルに使用する落ち着いた明朝体 */
+.section-title,
+.hero h1 {
+  font-family: 'Shippori Mincho', serif;
+  font-weight: 500;
 }
 
 /* -------------------------------------
    共通の部品（コンテナやボタン）
 ------------------------------------- */
 
-/* コンテナ：コンテンツの幅を揃えて中央に配置する */
 .container {
   max-width: 1000px;
-  /* ここより広くならない */
   margin: 0 auto;
-  /* 左右の余白を自動（中央揃え） */
   padding: 0 20px;
-  /* スマホの時に端にぴったりくっつかないように */
 }
 
-/* 文字を中央揃えにする便利なクラス */
 .text-center {
   text-align: center;
 }
 
-/* 大きなセクションごとの余白 */
+/* セクションの余白 */
 section {
   padding: 100px 0;
+}
+
+/* 透明感のあるガラス風のボックス（Glassmorphism） */
+.glass-box {
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 12px;
+  padding: 50px;
+  box-shadow: 0 8px 32px rgba(44, 62, 56, 0.05);
+  /* うっすらとした影 */
+}
+
+.border-accent {
+  border-top: 4px solid var(--accent-color);
 }
 
 /* -------------------------------------
@@ -74,16 +100,18 @@ section {
 ------------------------------------- */
 .section-label {
   display: block;
-  color: var(--main-green);
-  letter-spacing: 0.1em;
-  font-size: 0.9rem;
+  color: var(--accent-color);
+  letter-spacing: 0.15em;
+  font-size: 0.85rem;
   margin-bottom: 15px;
+  text-transform: uppercase;
 }
 
 .section-title {
-  font-size: 2rem;
+  font-size: 2.2rem;
   margin-bottom: 30px;
-  line-height: 1.4;
+  line-height: 1.5;
+  color: var(--text-color);
 }
 
 /* ボタンのデザイン */
@@ -92,15 +120,61 @@ section {
   background-color: var(--main-green);
   color: #ffffff;
   padding: 15px 40px;
-  border-radius: 30px;
-  /* 角を丸くする */
+  border-radius: 40px;
   margin-top: 20px;
-  transition: opacity 0.3s;
-  /* ホバー時にふわっと変わる */
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(58, 99, 81, 0.2);
 }
 
 .btn-primary:hover {
-  opacity: 0.8;
+  background-color: #2c4c3e;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(58, 99, 81, 0.3);
+  color: white;
+  /* リンクのopacityを一瞬無効化するため */
+}
+
+.btn-outline {
+  display: inline-block;
+  border: 1px solid var(--main-green);
+  color: var(--main-green);
+  padding: 12px 30px;
+  border-radius: 40px;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+  background-color: var(--main-green);
+  color: #ffffff;
+}
+
+/* -------------------------------------
+   アニメーション
+------------------------------------- */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1.5s ease forwards;
+}
+
+.delay-1 {
+  animation-delay: 0.5s;
+}
+
+.delay-2 {
+  animation-delay: 1.0s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* -------------------------------------
@@ -109,39 +183,35 @@ section {
 
 /* ナビゲーションバー */
 .navbar {
-  background-color: #ffffff;
-  border-bottom: 1px solid #e0e0e0;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
   padding: 20px 0;
   position: sticky;
-  /* スクロールしても上部にくっつく */
   top: 0;
   z-index: 100;
-  /* 他の要素より上に表示 */
 }
 
 .nav-content {
   display: flex;
-  /* 横並びにする */
   justify-content: space-between;
-  /* 左右に離す */
   align-items: center;
-  /* 縦の中央で揃える */
 }
 
 .logo {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: bold;
   color: var(--main-green);
+  letter-spacing: 0.05em;
 }
 
 .nav-links {
   list-style: none;
-  /* 点マークを消す */
   display: flex;
-  /* メニューを横並びにする */
   gap: 30px;
-  /* メニュー同士の隙間 */
   align-items: center;
+  font-size: 0.9rem;
 }
 
 .nav-btn {
@@ -151,25 +221,24 @@ section {
   border-radius: 20px;
 }
 
-/* ヒーローセクション（最初の画像） */
+.nav-btn:hover {
+  background: var(--main-green);
+  color: #fff;
+}
+
+/* 1. ヒーローセクション */
 .hero {
-  background-image: url('assets/img/hero_bg_nature.png');
+  /* 背景画像。画像が存在しない場合もうっすらとしたグレー系の色になる */
+  background-image: url('assets/img/hero_bg.png');
   background-size: cover;
-  /* 画像を枠いっぱいに広げる */
   background-position: center;
-  /* 画像の中央を表示 */
-  height: 80vh;
-  /* 画面の高さの80% */
+  height: 90vh;
   display: flex;
-  /* 横並び・縦並びの制御 */
   align-items: center;
-  /* 縦の中央で揃える */
-  text-align: center;
-  color: #ffffff;
   position: relative;
 }
 
-/* 画像が明るすぎると文字が見えないので、少し黒い膜をかける */
+/* 霧のようなオーバースクリーン */
 .hero::before {
   content: "";
   position: absolute;
@@ -177,49 +246,133 @@ section {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(30, 45, 38, 0.4);
+  /* 白っぽい半透明のグラデーションで霧のような抜け感を演出 */
+  background: linear-gradient(to right, rgba(236, 240, 241, 0.9) 0%, rgba(236, 240, 241, 0.2) 100%);
 }
 
-.hero .container {
+.hero-content {
   position: relative;
-  /* 黒い膜より上に文字を出すため */
   z-index: 10;
+  text-align: left;
+  max-width: 600px;
 }
 
 .hero h1 {
-  font-size: 2.5rem;
+  font-size: 2.8rem;
+  margin-bottom: 30px;
+  line-height: 1.4;
+  color: var(--text-color);
+}
+
+.hero p {
+  color: #4a5c54;
+  margin-bottom: 40px;
+  font-size: 1.05rem;
+}
+
+/* 2. Pain & Empathy セクション */
+.empathy .glass-box {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.pain-list {
+  text-align: left;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 30px;
+  border-radius: 8px;
+  margin: 30px 0;
+}
+
+.pain-item {
+  margin-bottom: 15px;
+  color: #555;
+  font-size: 1.05rem;
+}
+
+.pain-item:last-child {
+  margin-bottom: 0;
+}
+
+.empathy-message {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--main-green);
+  line-height: 1.8;
+}
+
+/* 3. Mission */
+.mission .glass-box {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.mission p {
   margin-bottom: 20px;
 }
 
-/* 白いボックスのデザイン（ミッション、会社概要など） */
-.mission-box,
-.company-box {
-  background-color: var(--box-bg);
-  padding: 50px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  /* 軽い影をつける */
+/* 4. Mechanism セクション */
+.mechanism-steps {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 50px;
+  gap: 20px;
 }
 
-.mission-box p {
-  margin-bottom: 20px;
+.step-card {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 30px 20px;
+  border-radius: 8px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.8);
 }
 
-/* サービス・製品エリア（4つを2列×2段で並べる） */
+.step-number {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--accent-color);
+  opacity: 0.5;
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 15px;
+}
+
+.step-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  color: var(--main-green);
+}
+
+.step-card p {
+  font-size: 0.95rem;
+  text-align: left;
+}
+
+.step-arrow {
+  font-size: 2rem;
+  color: var(--accent-color);
+  align-self: center;
+  margin-top: -20px;
+}
+
+/* 5. Product セクション */
 .service-grid {
   display: grid;
-  /* グリッド（マス目）状に配置します */
   grid-template-columns: 1fr 1fr;
-  /* 2列（1:1の割合）に並べます */
   gap: 30px;
-  margin-top: 40px;
 }
 
 .service-item {
-  background-color: var(--box-bg);
-  padding: 40px 20px;
-  border-radius: 10px;
   text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.service-item:hover {
+  transform: translateY(-5px);
 }
 
 .service-icon {
@@ -238,82 +391,121 @@ section {
   font-size: 0.95rem;
 }
 
-/* 会社概要の表 */
+/* 6. Supporters セクション */
+.supporters .glass-box {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.supporters p {
+  margin-bottom: 20px;
+}
+
+/* 7. Company セクション */
+.company-box {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
 .company-table {
   width: 100%;
   border-collapse: collapse;
-  /* 線の隙間を消す */
 }
 
 .company-table th,
 .company-table td {
   padding: 20px 0;
-  border-bottom: 1px solid #e0e0e0;
-  /* 下線だけ引く */
+  border-bottom: 1px solid rgba(44, 62, 56, 0.1);
   text-align: left;
 }
 
 .company-table th {
   width: 30%;
   color: var(--main-green);
+  font-weight: 500;
+}
+
+/* 8. Contact セクション */
+.contact {
+  padding: 100px 0 120px;
 }
 
 /* フッター */
 .footer {
-  background-color: var(--main-green);
+  background-color: var(--text-color);
   color: #ffffff;
   text-align: center;
-  padding: 40px 0;
+  padding: 50px 0;
 }
 
 .footer-logo {
   font-size: 1.5rem;
-  font-weight: bold;
+  font-family: 'Playfair Display', serif;
   margin-bottom: 10px;
+  color: var(--accent-color);
+}
+
+.copyright {
+  font-size: 0.85rem;
+  opacity: 0.7;
 }
 
 /* -------------------------------------
    スマホ用対応（レスポンシブデザイン）
 ------------------------------------- */
-/* 画面幅が768px以下の時だけ、この中の設定が有効になります */
 @media (max-width: 768px) {
-
-  /* セクションの余白を少し狭くする */
   section {
     padding: 60px 0;
   }
 
-  /* 文字サイズをスマホ向けに小さくする */
-  .hero h1 {
-    font-size: 1.8rem;
+  .hero {
+    height: 100vh;
+    text-align: center;
   }
 
-  /* ボックスの余白を狭くする */
-  .mission-box,
-  .company-box {
+  .hero::before {
+    /* スマホでは文字が見やすいように全体を白っぽく */
+    background: linear-gradient(to bottom, rgba(236, 240, 241, 0.8) 0%, rgba(236, 240, 241, 0.95) 100%);
+  }
+
+  .hero-content {
+    margin: 0 auto;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .glass-box {
     padding: 30px 20px;
   }
 
-  /* メニューを非表示にする（最初は非表示にしておく） */
+  /* メニューを非表示にする（ハンバーガーメニューの実装はJSが要るため今回はCSSで隠すか簡素化） */
   .nav-links {
     display: none;
   }
 
-  /* サービスの2列並びを「縦1列」にする魔法 */
-  .service-grid {
-    grid-template-columns: 1fr;
-    /* 1列に変更します */
+  .mechanism-steps {
+    flex-direction: column;
+    align-items: center;
   }
 
-  /* 会社概要の表を縦に並べる魔法 */
+  .step-arrow {
+    transform: rotate(90deg);
+    margin: 10px 0;
+  }
+
+  .service-grid {
+    grid-template-columns: 1fr;
+  }
+
   .company-table th,
   .company-table td {
     display: block;
-    /* これを追加するだけで縦並びになります */
     width: 100%;
   }
 
-  /* 下の余白を調整 */
   .company-table th {
     padding-bottom: 5px;
     border-bottom: none;
