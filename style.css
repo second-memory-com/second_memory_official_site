@@ -229,7 +229,7 @@ section {
 /* 1. ヒーローセクション */
 .hero {
   /* 背景画像。画像が存在しない場合もうっすらとしたグレー系の色になる */
-  background-image: url('assets/img/hero_bg.png');
+  background-image: url('assets/img/hero_bg_nature.png');
   background-size: cover;
   background-position: center;
   height: 90vh;
