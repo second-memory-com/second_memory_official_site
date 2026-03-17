@@ -391,7 +391,58 @@ section {
   font-size: 0.95rem;
 }
 
-/* 6. Supporters セクション */
+/* 6. Insights セクション */
+.column-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.column-card {
+  display: block;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 40px;
+}
+
+.column-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(44, 62, 56, 0.1);
+  opacity: 1;
+}
+
+.column-meta {
+  font-size: 0.85rem;
+  color: var(--accent-color);
+  margin-bottom: 10px;
+  font-family: 'Playfair Display', serif;
+}
+
+.column-card h3 {
+  font-size: 1.4rem;
+  color: var(--main-green);
+  margin-bottom: 15px;
+  font-family: 'Shippori Mincho', serif;
+}
+
+.column-card p {
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.read-more {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--main-green);
+  display: inline-block;
+  border-bottom: 1px solid var(--main-green);
+  padding-bottom: 2px;
+}
+
+/* 7. Supporters セクション */
 .supporters .glass-box {
   text-align: center;
   max-width: 800px;
@@ -402,7 +453,7 @@ section {
   margin-bottom: 20px;
 }
 
-/* 7. Company セクション */
+/* 8. Company セクション */
 .company-box {
   max-width: 800px;
   margin: 0 auto;
@@ -426,7 +477,7 @@ section {
   font-weight: 500;
 }
 
-/* 8. Contact セクション */
+/* 9. Contact セクション */
 .contact {
   padding: 100px 0 120px;
 }
