@@ -8,9 +8,10 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
-            background-color: #F4F7FE;
-            color: #2B3674;
+            background-color: #ecf0f1;
+            color: #2c3e38;
             font-family: 'Helvetica Neue', 'Arial', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Meiryo', sans-serif;
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
         }
         .chart-container {
             position: relative;
@@ -27,13 +28,13 @@
             }
         }
         .glass-card {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 10px 30px rgba(67, 97, 238, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(44, 62, 56, 0.05);
         }
         .gradient-text {
-            background: linear-gradient(90deg, #4361EE, #F72585);
+            background: linear-gradient(90deg, #3a6351, #8da69b);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -118,15 +119,15 @@
                 </p>
                 <ul class="space-y-4 text-gray-700">
                     <li class="flex items-start gap-3">
-                        <span class="text-[#F72585] text-xl font-bold">1.</span>
+                        <span class="text-[#3a6351] text-xl font-bold">1.</span>
                         <span><strong>「着手」のスイッチ:</strong> 小脳を刺激することで、前頭前野の「行動開始」の信号が伝わりやすくなります。</span>
                     </li>
                     <li class="flex items-start gap-3">
-                        <span class="text-[#F72585] text-xl font-bold">2.</span>
+                        <span class="text-[#3a6351] text-xl font-bold">2.</span>
                         <span><strong>ノイズの低減:</strong> 深い呼吸が脳内の雑念（DMN: デフォルトモードネットワーク）を鎮め、今やるべきことに意識を向けます。</span>
                     </li>
                     <li class="flex items-start gap-3">
-                        <span class="text-[#F72585] text-xl font-bold">3.</span>
+                        <span class="text-[#3a6351] text-xl font-bold">3.</span>
                         <span><strong>微細な修正の積み重ね:</strong> バランスを崩し、戻す。この繰り返しのプロセスが、心の「しなやかさ（レジリエンス）」を育みます。</span>
                     </li>
                 </ul>
@@ -222,16 +223,16 @@ new Chart(radarCtx, {
         datasets: [{
             label: '調律前（モヤモヤ状態）',
             data: [40, 50, 45, 35, 45, 40],
-            backgroundColor: 'rgba(247, 37, 133, 0.2)',
-            borderColor: '#F72585',
-            pointBackgroundColor: '#F72585',
+            backgroundColor: 'rgba(141, 166, 155, 0.2)',
+            borderColor: '#8da69b',
+            pointBackgroundColor: '#8da69b',
             borderWidth: 2
         }, {
             label: '調律後（整った状態）',
             data: [75, 80, 80, 70, 75, 80],
-            backgroundColor: 'rgba(67, 97, 238, 0.2)',
-            borderColor: '#4361EE',
-            pointBackgroundColor: '#4361EE',
+            backgroundColor: 'rgba(58, 99, 81, 0.2)',
+            borderColor: '#3a6351',
+            pointBackgroundColor: '#3a6351',
             borderWidth: 2
         }]
     },
@@ -269,8 +270,8 @@ new Chart(lineCtx, {
         }, {
             label: '腹式呼吸 + 片足立ち',
             data: [45, 62, 75, 84, 90],
-            borderColor: '#4CC9F0',
-            backgroundColor: 'rgba(76, 201, 240, 0.2)',
+            borderColor: '#3a6351',
+            backgroundColor: 'rgba(58, 99, 81, 0.2)',
             fill: true,
             tension: 0.4,
             borderWidth: 3
@@ -301,13 +302,13 @@ new Chart(scatterCtx, {
             data: [
                 {x: 20, y: 35, r: 10}, {x: 18, y: 40, r: 8}, {x: 22, y: 32, r: 12}
             ],
-            backgroundColor: 'rgba(247, 37, 133, 0.6)'
+            backgroundColor: 'rgba(141, 166, 155, 0.6)'
         }, {
             label: '調律実施後',
             data: [
                 {x: 6, y: 78, r: 12}, {x: 8, y: 72, r: 10}, {x: 5, y: 85, r: 11}
             ],
-            backgroundColor: 'rgba(67, 97, 238, 0.6)'
+            backgroundColor: 'rgba(58, 99, 81, 0.6)'
         }]
     },
     options: {
@@ -344,7 +345,7 @@ new Chart(doughnutCtx, {
         ],
         datasets: [{
             data: [2, 2],
-            backgroundColor: ['#4361EE', '#F8961E'],
+            backgroundColor: ['#3a6351', '#8da69b'],
             borderWidth: 0,
             hoverOffset: 4
         }]
